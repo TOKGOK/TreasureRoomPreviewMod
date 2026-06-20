@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>TreasureRoomPreviewMod</AssemblyName>
+    <RootNamespace>TreasureRoomPreviewMod</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>.</OutputPath>
+    <!-- 游戏 Managed 目录路径，可通过 dotnet build -p:GameManagedPath="你的路径" 覆盖 -->
+    <GameManagedPath Condition="'$(GameManagedPath)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\game\DemonLordJustABlock_Data\Managed</GameManagedPath>
+  </PropertyGroup>
+
+  <!--
+    构建说明：
+    1. 在游戏同级目录创建 game/ 文件夹，复制游戏 Managed 目录内容到其中
+       例如: D:\GAME\game\DemonLordJustABlock_Data\Managed\
+    2. 直接 dotnet build，或通过 -p:GameManagedPath="D:\你的路径\Managed" 指定路径
+  -->
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameManagedPath)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameManagedPath)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

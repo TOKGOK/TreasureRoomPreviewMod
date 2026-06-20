@@ -1,0 +1,5 @@
+{
+  "dll": "TreasureRoomPreviewMod.dll",
+  "entryClass": "TreasureRoomPreviewMod.Main",
+  "displayName": "宝箱房透视"
+}
